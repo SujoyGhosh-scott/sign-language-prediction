@@ -25,3 +25,5 @@ this file will import the saved model, and make preditions on some of the test i
 ## Testing from video
 
 to get sign predictions from client video feed, please run the file `realtime-test.py`
+this script will start get video feed from client device. In the video feed please show the sign in the marked area.
+the marked area will be cropped and preprocessed to make prediction. the input feed and the predicted sign will be displayed on the video feed as well.

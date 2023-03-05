@@ -10,7 +10,7 @@ model_inp_img_ratio = 32
 
 model.summary()
 
-local_images_names = ['test_images/1.jpg', 'test_images/W.jpg']
+local_images_names = ['test_images/1.jpg', 'test_images/5.jpg', 'test_images/I.jpg', 'test_images/W.jpg', 'test_images/X.jpg']
 local_images = []
 
 for i in range(len(local_images_names)):
