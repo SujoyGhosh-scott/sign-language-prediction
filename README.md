@@ -5,9 +5,9 @@ in out case there will be 36 subdirs representing a different classes containing
 
 to see how the preprocessed images will look, please run `preprocessing-test.py` file. This will run the preprocessing on some of the test images and show the result.
 
-## Model Training
+## Model Training CNN
 
-to train the model please run the `train.py` file.
+to train the model using CNN classifier, please run the `train.py` file.
 this file will read all the images in `all_images` array, preprocess them, and display 20 random preprocessed images.
 split the data into train, test, and validation sets, and train the model.
 to update the current model please update the `myModel` function.
@@ -17,9 +17,20 @@ to update the current model please update the `myModel` function.
 once the model is trained, it shows the accuracy, and saves the model in a pickle file
 `model_trained.p` in the root.
 
-## Model Testing
+### Model Testing
 
 to test the model, please run the `test.py` file.
+this file will import the saved model, and make preditions on some of the test images.
+
+## Model Treaining SVM
+
+to train the model using SVM, please run `trainSVM.py` file.
+it works the same way as the CNN model does. but as the model training time depends on the no features and no of samples, so we had to reduce the image ratio to 16x16.
+The trained model is saved in `model_trained_SVM.p` pickle file.
+
+### Model Testing
+
+to test the model, please run `testSVM.py`.
 this file will import the saved model, and make preditions on some of the test images.
 
 ## Testing from video
