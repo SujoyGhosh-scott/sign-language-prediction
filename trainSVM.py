@@ -15,7 +15,7 @@ from sklearn.metrics import accuracy_score
 ## defining parameters
 #
 
-path = "test-svm" # folder with all the class folders
+path = "test" # folder with all the class folders
 testRatio = 0.2    # if 1000 images split will 200 for testing
 validationRatio = 0.2 # if 1000 images 20% of remaining 800 will be 160 for validation
 total_classes = 35
@@ -30,12 +30,6 @@ model_inp_img_ratio = 16
 count = 0
 all_images = [] #stores all the images of all classes
 class_no = [] #stores the class index no respect to every image in all images
-
-'''
-categories --> classes
-flat_data_arr --> all_images
-target_arr --> class no
-'''
 
 print("importing all images")
 

@@ -19,15 +19,15 @@ for i in range(len(local_images_names)):
     img = cv2.GaussianBlur(img,(5,5),2)
     img = cv2.resize(img, (model_inp_img_ratio, model_inp_img_ratio))
 
-    local_images.append(img.flatten())
+    local_images.append([img.flatten()])
 print('local test images read')
 
 
 for i in range(len(local_images_names)):
     print("\nfitting: ",local_images_names[i])
     # print(local_images[i])
-    probability=model.predict_proba([local_images[i]])
+    probability=model.predict_proba(local_images[i])
     for ind,val in enumerate(all_classes):
         print(f'{val} = {round(probability[0][ind]*100, 2)}%, ', end="")
-    print("\nThe predicted image is : "+all_classes[model.predict([local_images[i]])[0]])
+    print("\nThe predicted image is : "+all_classes[model.predict(local_images[i])[0]])
 
