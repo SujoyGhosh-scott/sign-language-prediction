@@ -30,6 +30,7 @@ for i in range(len(local_images_names)):
     # classIndex = model.predict_classes(local_images[i])
     classIndex = np.argmax(prediction, axis=1)
     probabilityValue =np.amax(prediction)
-    print(local_images_names[i], " Class: ", all_classes[classIndex[0]], " probability: ", probabilityValue)
-    print("predictions: ", prediction)
+    print("\nfitting: ", local_images_names[i])
+    print("Prediction: ", all_classes[classIndex[0]], " probability: ", probabilityValue)
+    # print("predictions: ", prediction)
 
