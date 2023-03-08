@@ -4,13 +4,14 @@ import pickle
 pickle_in=open("model_trained_RandomForest.p","rb")  ## rb = READ BYTE
 model=pickle.load(pickle_in)
 
-all_classes = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
-# all_classes = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
+# all_classes = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
+all_classes = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
 model_inp_img_ratio = 32
 
 # model.summary()
 
-local_images_names = ['test_images/1.jpg', 'test_images/5.jpg', 'test_images/I.jpg', 'test_images/W.jpg', 'test_images/X.jpg']
+# local_images_names = ['test_images/1.jpg', 'test_images/5.jpg', 'test_images/I.jpg', 'test_images/W.jpg', 'test_images/X.jpg']
+local_images_names = ['test_images/1.jpg', 'test_images/5.jpg', 'test_images/od-1.jpg', 'test_images/od-4.jpg']
 local_images = []
 
 for i in range(len(local_images_names)):
