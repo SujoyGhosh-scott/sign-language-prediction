@@ -15,9 +15,6 @@ from sklearn.metrics import accuracy_score
 #
 
 path = "own-data" # folder with all the class folders
-testRatio = 0.2    # if 1000 images split will 200 for testing
-validationRatio = 0.2 # if 1000 images 20% of remaining 800 will be 160 for validation
-total_classes = 35
 # classes = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
 classes = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
 model_inp_img_ratio = 32
