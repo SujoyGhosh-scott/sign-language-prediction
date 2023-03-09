@@ -6,7 +6,7 @@ import pickle
 pickle_in=open("model_trained_SVM.p","rb")  ## rb = READ BYTE
 model=pickle.load(pickle_in)
 
-all_classes = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
+all_classes = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
 model_inp_img_ratio = 16
 
 camera = cv2.VideoCapture(0)
@@ -23,7 +23,6 @@ while True:
     ## preprocess the cropped section
     img = cv2.cvtColor(crop,cv2.COLOR_BGR2GRAY)
     img = cv2.GaussianBlur(img,(5,5),2)
-    img = cv2.flip(img, 1)                  # flipping 180 deg as the input images were taken this way.
     ppd_img = img
     img = cv2.resize(img, (model_inp_img_ratio, model_inp_img_ratio))         # the model was trained with 32x32 images
     
@@ -33,11 +32,12 @@ while True:
     classIndex = model.predict(model_inp)[0]
     prediction = all_classes[classIndex]
     print('class idx: ', classIndex, " prediction: ", prediction)
-    print('probability')
-    print(probabilityValue)
+    # print('probability')
+    # print(probabilityValue)
 
-    ## showing prediction in the frame
-    cv2.putText(frame, "class: " + str(classIndex) + " prediction: " + prediction, (120, 35), font, 0.75, (0, 0, 255), 2, cv2.LINE_AA)
+    if(max(probabilityValue[0])>0.7):
+        ## showing prediction in the frame
+        cv2.putText(frame, "class: " + str(classIndex) + " prediction: " + prediction, (120, 35), font, 0.75, (0, 0, 255), 2, cv2.LINE_AA)
     
     ## showing both feed
     # cv2.imshow('Camera', frame)
