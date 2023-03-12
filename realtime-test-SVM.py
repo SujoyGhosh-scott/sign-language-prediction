@@ -12,6 +12,9 @@ model_inp_img_ratio = 16
 camera = cv2.VideoCapture(0)
 font = cv2.FONT_HERSHEY_SIMPLEX
 
+counter = 0
+message = ""
+
 while True:
     _, frame = camera.read()
     ## getting user feed
@@ -33,11 +36,19 @@ while True:
     prediction = all_classes[classIndex]
     print('class idx: ', classIndex, " prediction: ", prediction)
     # print('probability')
-    # print(probabilityValue)
+    print(probabilityValue)
 
-    if(max(probabilityValue[0])>0.7):
+    if(max(probabilityValue[0])>0.95):
+        old_letter = prediction
+        counter += 1
+        print(counter)
+        if(counter > 100 and prediction == old_letter):
+            message += prediction
+            old_letter = ""
+            counter = 0
         ## showing prediction in the frame
         cv2.putText(frame, "class: " + str(classIndex) + " prediction: " + prediction, (120, 35), font, 0.75, (0, 0, 255), 2, cv2.LINE_AA)
+    cv2.putText(frame, "message: " + message, (80, 70), font, 0.75, (0, 0, 255), 2, cv2.LINE_AA)
     
     ## showing both feed
     # cv2.imshow('Camera', frame)

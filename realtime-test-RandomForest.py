@@ -36,9 +36,9 @@ while True:
     print('probability')
     print(probabilityValue)
 
-    ## showing prediction in the frame
+    ## showing prediction in the frame if matches more than 70% of any value
     if(max(probabilityValue[0]) >= 0.7):
-        cv2.putText(frame, "class: " + str(classIndex) + " prediction: " + prediction, (120, 35), font, 0.75, (0, 0, 255), 2, cv2.LINE_AA)
+        cv2.putText(frame, "class: " + str(classIndex) + " prediction: " + prediction, (80, 35), font, 0.75, (0, 0, 255), 2, cv2.LINE_AA)
     
     ## showing both feed
     # cv2.imshow('Camera', frame)
