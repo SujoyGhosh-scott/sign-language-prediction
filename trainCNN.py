@@ -20,7 +20,7 @@ from keras.preprocessing.image import ImageDataGenerator
 ## defining parameters
 #
 
-path = "data" # folder with all the class folders
+path = "own-data" # folder with all the class folders
 labelFile = 'labels.csv' # file with all names of classes
 batch_size_val=50  # how many to process together
 steps_per_epoch_val=2000
@@ -29,7 +29,8 @@ imageDimesions = (128,128,3)
 testRatio = 0.2    # if 1000 images split will 200 for testing
 validationRatio = 0.2 # if 1000 images 20% of remaining 800 will be 160 for validation
 total_classes = 35
-classes = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
+# classes = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
+classes = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
 model_inp_img_ratio = 32
 
 #
@@ -68,19 +69,19 @@ print("all images imported, total images: ", len(all_images))
 # print(all_images[0])
 
 ### showing 20 random samples of read images
-rand_img_start_idx = 0
-rand_img_end_idx = 2100
-f, axarr = plt.subplots(4,5)
-for i in range(4):
-    for j in range(5):
-        # print(i, j, "between", str((rand_img_start_idx, rand_img_end_idx)), str(random.randrange(rand_img_start_idx, rand_img_end_idx)) ,end=" ")
-        rand_idx = random.randrange(rand_img_start_idx, rand_img_end_idx)
-        axarr[i,j].imshow(all_images[rand_idx], cmap='Greys')
-        axarr[i, j].set_title(classes[class_no[rand_idx]])
-        rand_img_start_idx += 2100
-        rand_img_end_idx += 2100
-    print("")
-plt.show()
+# rand_img_start_idx = 0
+# rand_img_end_idx = 2100
+# f, axarr = plt.subplots(4,5)
+# for i in range(4):
+#     for j in range(5):
+#         # print(i, j, "between", str((rand_img_start_idx, rand_img_end_idx)), str(random.randrange(rand_img_start_idx, rand_img_end_idx)) ,end=" ")
+#         rand_idx = random.randrange(rand_img_start_idx, rand_img_end_idx)
+#         axarr[i,j].imshow(all_images[rand_idx], cmap='Greys')
+#         axarr[i, j].set_title(classes[class_no[rand_idx]])
+#         rand_img_start_idx += 2100
+#         rand_img_end_idx += 2100
+#     print("")
+# plt.show()
 
 
 #
