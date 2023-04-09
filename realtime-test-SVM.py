@@ -3,7 +3,7 @@ import cv2
 import numpy as np
 import pickle
 
-pickle_in=open("model_trained_SVM.p","rb")  ## rb = READ BYTE
+pickle_in=open("modelSVM.p","rb")  ## rb = READ BYTE
 model=pickle.load(pickle_in)
 
 all_classes = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
