@@ -5,6 +5,7 @@ data_folder = 'own-data'
 output_folder = 'own-data-preprocessed'
 output_img_dim = 32 # the output image will be 32x32
 total_train_images = 0
+test_samples = 39
 
 # Create the output folder if it does not exist
 if not os.path.exists(output_folder):
@@ -45,9 +46,9 @@ for folder_name in os.listdir(data_folder):
             cv2.imwrite(ppd_img_path, image)
 
             count += 1
-            if(count == 39):
+            if(count == test_samples):
                 mode = 'train'
-            if(count > 39):
+            if(count > test_samples):
                 total_train_images += 1
 
 print('total train images: ', total_train_images)

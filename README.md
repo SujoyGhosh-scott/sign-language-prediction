@@ -1,12 +1,14 @@
-# sign language prediction
+# Sign language recognition
 
-in the root of the file we need to add a `/data` folder, that contains all the images in different classes.
-in out case there will be 36 subdirs representing a different classes containing images of each class.
+Sign language is a visual language that uses a combination of hand gestures, facial expressions, and body movements to convey meaning. It is used primarily by people who are deaf or hard of hearing as a means of communication, but it can also be used by individuals who are not deaf but have difficulty speaking or hearing.
 
-to see how the preprocessed images will look, please run `preprocessing-test.py` file. This will run the preprocessing on some of the test images and show the result.
+Through this project our goal will be to create a system that will be able to recognise Sign Lanuage from real-time video feed of users with the help of machine learning. There are different types of Sign Languages, some uses gesture to represent words, some expresses letters using hand sings. So, we choose to stick with Indian Sign Language, where different hand signs are used to express different letters, that are used to form sentences.
+
+The project structure is expressed in the following image.
 
 ## Data Collection
 
+The First step is Data Collection, where we collect that data on which the machine learning models will be trained. We will soon be adding the link of dataset we have collected. but for now, to test the files, other open source datasets can be used.
 For testing out the system real time, it is always recommended to collect data instead of using open source datasets.
 to Collect data, the `data-collection.py` file will be used.
 This script will create a folder called `own-date` containing subdirs of different classes. where image samples will be saved.
@@ -18,45 +20,39 @@ This script will create a folder called `own-date` containing subdirs of differe
 - in the terminal the no of sample images been saved will be shown.
 - once desired no of samples are collected, please terminate the process.
 
-## Model Training CNN
+## Data Preprocessing
 
-to train the model using CNN classifier, please run the `trainCNN.py` file.
-this file will read all the images in `all_images` array, preprocess them, and display 20 random preprocessed images.
-split the data into train, test, and validation sets, and train the model.
-to update the current model please update the `myModel` function.
+Preprocessing is an essential step in machine learning because it helps to transform raw data into a format that can be easily understood and processed by machine learning algorithms. In this project, to preprocess the collected images, we first resized the image to 32x32, then turned the image into grayscale and applied Gaussian Filter in the images.
 
-#### WARNING: do not make changes in the very first Convolution and the very last Dense layer. This will mess up the input and output.
+For the SVM and RandomForest model, the preprocessing of the data is done in the training file itself. But for the CNN model, we need to preprocess the collected file saperately. Without this step, the training file (i.e. `/training/trainCNN.py`) won't execute. So if you're only intersted in SVM or RandomForest, this step can be avoided.
 
-once the model is trained, it shows the accuracy, and saves the model in a pickle file
-`model_trained.p` in the root.
+To preprocess the collected images, `/proprocessCNN.py` file needs to be executed. This file creates a `own-data-preprocessed` folder in the root. That contains two subdirs `train` and `test`. Both will have all the image classes of `own-data` folder.
+In our case, we have around 200 images samples of each classes. and we wanted to to train the model with 80% of the data.
+This is why test_samples[`/preprocessCNN.py line 8`] has the value 40, as 20% of 200 images is 40. This many image samples will be stored in the test sample (i.e. in `/own-data-preprocessed/test/[class]`), and the rest in the train sample (i.e. in `/own-data-preprocessed/train/[class]`).
+Please change the value accoring to your choice.
 
-### Model Testing
+## Model Training
 
-to test the model, please run the `testCNN.py` file.
-this file will import the saved model, and make preditions on some of the test images.
+All the trained models are stored as pickle file in the root of the project. But to run the training locally, please follow the following steps.
 
-## Model Treaining SVM OR RandomForest
+### SVM and Random Forest
 
-to train the model using SVM, please run `trainSVM.py` file.
-to train the model using RandomForest, please run `trainRandomForest.py` file.
-it works the same way as the CNN model does. but as the model training time depends on the no features and no of samples in SVM, so we had to reduce the image ratio to 16x16.
-The trained model is saved in `model_trained_SVM.p` or `model_trained_RandomForest.p` pickle file.
+The structure of the file and the way they execute are very similar. To train the model using these classifiers, please execute the files`/training/trainSVM.py` or `/training/trainRandomForest.py`. In both of these files, first the data is read, and preprocessed. then the model is trained, and the trained model is saved in the root as a pickle file with the name `model[Classifer].p`.
 
-### Model Testing
+### CNN
 
-to test the SVM model, please run `testSVM.py`.
-to test the RandomForest model, please run `testRandomForest.py`.
-this file will import the saved model, and make preditions on some of the test images.
+To train the model using CNN classifier, we need to make sure the data is preprocessed, and the `own-data-preprocessed` dir is created properly in the root. Once all these are set, we are ready to train the model using `/training/trainCNN.py` file. This file trains the model, plots the charts of accuracy and data loss wrt training and validation data, and saves the model in the root as a pickle file with the name `modelCNN.p`.
 
-## Testing from video
+## Model Testing
 
-to get sign predictions from client video feed, please run the file `realtime-test-ModelType.py`
-this script will start get video feed from client device. In the video feed please show the sign in the marked area.
-the marked area will be cropped and preprocessed to make prediction. the input feed and the predicted sign will be displayed on the video feed as well.
+### Getting Charts
 
-## Get Confusion-Matrix
+To analize the performance of the trained models please checkout the `/plots` directory. The files in this directory helps to visualise the confusion matrix, f1-score etc to get an idea how efficiently the model works. Before running the files, make sure to have the dataset `own-data` in the root.
 
-To see the confusion matrix for SVM or RandomForest model, please run `confusion-matrix-SVM-RF.py` file.
-to choose the model, only the model import section in the beginning needs to be changed.
-The rest portion will be same for both.
-Before running the file, the images data dir `own-data` has to be present in the root.
+### Testing the model real-time
+
+To test the system real-time, please run the `/realtime-test-[Classifier].py` files in the root. This file takes feed from the client device, the user has to show the signs in the marked section, and using the trained model, the signs are recognised to form sentences.
+
+## Application
+
+This is where we create a GUI to make the system usable to non-teachnical people.
