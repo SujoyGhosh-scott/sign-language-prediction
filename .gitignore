@@ -1,4 +1,2 @@
-/data
-/test
-/own-data
-/own-data-preprocessed
+own-data/
+own-data-preprocessed/
