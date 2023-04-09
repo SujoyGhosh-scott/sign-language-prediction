@@ -10,8 +10,8 @@ from keras.layers import Conv2D, MaxPooling2D, Flatten, Dense
 # Set the paths for the training and validation data
 root = os.getcwd() # folder with all the class folders
 print("project root: ", root)
-train_dir =  root + '/training/own-data-preprocessed/train'
-val_dir = root + '/training/own-data-preprocessed/test'
+train_dir =  root + '/own-data-preprocessed/train'
+val_dir = root + '/own-data-preprocessed/test'
 
 # Set the image dimensions
 img_width, img_height = 32, 32

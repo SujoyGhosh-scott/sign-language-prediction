@@ -32,11 +32,11 @@ class_no = [] #stores the class index no respect to every image in all images
 print("importing all images")
 
 for dir in classes:
-    images = os.listdir(root + '/training/own-data/' + dir)
+    images = os.listdir(root + '/own-data/' + dir)
     print("reading images of class: "+dir)
     for img_name in images:
         ###reading the image
-        img = cv2.imread(root + '/training/own-data/' + dir + "/" + img_name)
+        img = cv2.imread(root + '/own-data/' + dir + "/" + img_name)
 
         # print("before preprocessing shape: ", str(img.shape), end=" ")
 
