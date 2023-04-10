@@ -6,6 +6,8 @@ Through this project our goal will be to create a system that will be able to re
 
 The project structure is expressed in the following image.
 
+![alt text](https://github.com/SujoyGhosh-scott/sign-language-prediction/blob/main/project-flow-diagram.jpg)
+
 ## Data Collection
 
 The First step is Data Collection, where we collect that data on which the machine learning models will be trained. We will soon be adding the link of dataset we have collected. but for now, to test the files, other open source datasets can be used.
