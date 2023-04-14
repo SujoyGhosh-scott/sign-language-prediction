@@ -17,8 +17,9 @@ val_dir = root + '/own-data-preprocessed/test'
 img_width, img_height = 32, 32
 
 # Set the number of samples used for each step
-train_samples = 1896
-val_samples = 400
+train_samples = 13974
+val_samples = 3230
+output_classes = 38
 
 # Set the number of epochs
 epochs = 10
@@ -78,7 +79,7 @@ model.add(Flatten())
 model.add(Dense(512, activation='relu'))
 
 # Add the output layer with softmax activation function
-model.add(Dense(10, activation='softmax'))
+model.add(Dense(output_classes, activation='softmax'))
 
 # Compile the model with categorical crossentropy loss function, adam optimizer, and accuracy metric
 model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
@@ -110,7 +111,7 @@ plt.show()
  
  
 # STORE THE MODEL AS A PICKLE OBJECT
-pickle_path = os.path.join(root, "modelCNN.p")
+pickle_path = os.path.join(root, "modelCNN(all-classes).p")
 pickle_out= open(pickle_path,"wb")  # wb = WRITE BYTE
 pickle.dump(model,pickle_out)
 pickle_out.close()

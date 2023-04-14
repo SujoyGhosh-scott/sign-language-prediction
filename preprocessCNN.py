@@ -3,9 +3,9 @@ import os
 
 data_folder = 'own-data'
 output_folder = 'own-data-preprocessed'
-output_img_dim = 32 # the output image will be 32x32
+output_img_dim = 64 # the output image will be 32x32
 total_train_images = 0
-test_samples = 39
+test_samples = 85
 
 # Create the output folder if it does not exist
 if not os.path.exists(output_folder):

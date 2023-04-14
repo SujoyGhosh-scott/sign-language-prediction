@@ -2,19 +2,12 @@ import cv2
 import numpy as np
 import time
 import os
-import string
+# import string
 
 
 # Create the directory structure
 if not os.path.exists("own-data"):
     os.makedirs("own-data")
-for i in range(9):
-    if not os.path.exists("data/" + str(i)):
-        os.makedirs("data/"+str(i))
-
-for i in string.ascii_uppercase:
-    if not os.path.exists("data/" + i):
-        os.makedirs("data/"+i)
 
 
 cap = cv2.VideoCapture(0)
@@ -31,6 +24,7 @@ while True:
 
     ## crop from the video feed
     crop = frame[100:300, 50:250]
+    crop = cv2.flip(crop, 1)
 
     # showing the cropped image in the top right of main video frame
     # so we know what we are saving

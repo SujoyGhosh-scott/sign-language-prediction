@@ -50,7 +50,7 @@ while True:
         old_letter = prediction
         counter += 1
         print("counter: ", counter)
-        if(counter > 100 and prediction == old_letter):
+        if(counter > 50 and prediction == old_letter):
             message += prediction
             old_letter = ""
             counter = 0
