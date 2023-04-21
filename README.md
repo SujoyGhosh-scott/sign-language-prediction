@@ -22,6 +22,10 @@ This script will create a folder called `own-date` containing subdirs of differe
 - in the terminal the no of sample images been saved will be shown.
 - once desired no of samples are collected, please terminate the process.
 
+The dataset we used is made public in kaggle. to checkout the dataset please visit the following link.
+(https://www.kaggle.com/datasets/sujoy2000/indian-sign-language)
+the whole dataset, along with the preprocessed data is available here. With this you can directly start testing the codebase of real-time prediction.
+
 ## Data Preprocessing
 
 Preprocessing is an essential step in machine learning because it helps to transform raw data into a format that can be easily understood and processed by machine learning algorithms. In this project, to preprocess the collected images, we first resized the image to 32x32, then turned the image into grayscale and applied Gaussian Filter in the images.
