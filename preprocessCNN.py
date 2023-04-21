@@ -33,7 +33,9 @@ for folder_name in os.listdir(data_folder):
             ## preprocess the image
             image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
             image = cv2.GaussianBlur(image,(5,5),2)
-            image = cv2.resize(image, (output_img_dim, output_img_dim))
+            th3 = cv2.adaptiveThreshold(image,255,cv2.ADAPTIVE_THRESH_GAUSSIAN_C,cv2.THRESH_BINARY_INV,11,2) 
+            ret, test_img = cv2.threshold(th3, 70, 255, cv2.THRESH_BINARY_INV+cv2.THRESH_OTSU)
+            image = cv2.resize(test_img, (output_img_dim, output_img_dim))
 
             ## create subdir if not already exist in the subfolder in the output folder
             subdir_path = output_folder + '/' + mode + '/' + folder_name

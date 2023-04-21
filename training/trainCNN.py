@@ -14,7 +14,7 @@ train_dir =  root + '/own-data-preprocessed/train'
 val_dir = root + '/own-data-preprocessed/test'
 
 # Set the image dimensions
-img_width, img_height = 32, 32
+img_width, img_height = 64, 64
 
 # Set the number of samples used for each step
 train_samples = 13974
